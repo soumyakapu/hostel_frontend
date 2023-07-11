@@ -1,7 +1,8 @@
-const Home = ()=>{
+const Home = (data)=>{
     return(
         <div>
             <h2>Home</h2>
+          
         </div>
     )
 }

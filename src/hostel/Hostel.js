@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { FETCH_ALL_HOSTELS } from "../utils/Api"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../index.css'
 const Hostel = ()=>{
     const [hostels,setHostels] = useState([])
   
@@ -23,26 +24,27 @@ const Hostel = ()=>{
           .catch(error => console.error(error));
       }, []);
     return(
-        <div>
+        <div className="">
          <h2>Hostels</h2>
          <hr/>
-           
+           <div className="container">
                 {hostels.map(hostel => (
-                    <div className="grid text-center style=--bs-columns: 3 bg-light">
+                    <div className="grid text-center style=--bs-columns: 3  listitems"> 
+                    {/* sbg-light */}
                 <ul key={hostel.id}>
-                    <div className="g-col-2">
-                    <li ><label>HostelName :</label>{hostel.hostelName}</li></div>
-                    <div className="g-col-4"><li><label>HostelOwnerName :</label>{hostel.hostelOwnerName}</li></div>
-                    <div className="g-col-4"><li>{hostel.hostelAddress}</li></div>
-                    <div className="g-col-4"> <li >{hostel.hostelContact.hostelContact}</li></div>
-                    <div className="g-col-4"><li >{hostel.hostelContact.hostelOwnerContact}</li></div>
-                    <div className="g-col-4"><li >{hostel.facilities.electricity}</li></div>
-                    <div className="g-col-4"><li >{hostel.facilities.water}</li></div>
+                    <div className="g-col-2 ">
+                    <label>HostelName :</label>{hostel.hostelName}</div>
+                    <div className="g-col-4"><label>HostelOwnerName :</label>{hostel.hostelOwnerName}</div>
+                    <div className="g-col-4"><label>HostelAddress :</label>{hostel.hostelAddress}</div>
+                    <div className="g-col-4"> <label>HostelContact :</label>{hostel.hostelContact.hostelContact}</div>
+                    <div className="g-col-4"><label>HostelOwnerContact :</label>{hostel.hostelContact.hostelOwnerContact}</div>
+                    <div className="g-col-4"><label>Electicity :</label>{hostel.facilities.electricity}</div>
+                    <div className="g-col-4"><label>Water :</label>{hostel.facilities.water}</div>
                     
                 </ul>
                 </div>
                 ))}
-       
+            </div>
         </div>
     )
 }
