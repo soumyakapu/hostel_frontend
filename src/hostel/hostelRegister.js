@@ -7,6 +7,7 @@ const HostelRegister = () =>{
         hostelName :'',
         hostelOwnerName :'',
         hostelAddress : '',
+        email:'',
         hostelContact :{
             hostelContact : '',
             hostelOwnerContact : ''
@@ -121,14 +122,29 @@ const HostelRegister = () =>{
             },
             body : JSON.stringify(hostels)
         })
+        
        const jsondata = await response.json()
-       console.log(jsondata)
+      console.log(jsondata)
+      if(jsondata.status !== 'CREATED'){
+        alert(jsondata.message)
+        // navigate('/register')
+      }
+      else{
+        navigate('/signin')
+      }
+        
+      
+
     }
     const submitHandler = (e) =>{
         e.preventDefault()
         createHostel()
-        setHostels(hosteDetails)
-        navigate('/'+hostels.hostelOwnerName)
+        // if(hosteDetails.hostelName.length>0
+        //     && hosteDetails.hostelOwnerName.length>0 && hosteDetails.hostelAddress.length>0 
+        //     && hosteDetails.hostelContact.hostelContact.length >0  && hosteDetails.hostelContact.hostelOwnerContact.length > 0){
+        //         console.log("Something getting")
+               
+        // }
     }
     return(
   
@@ -141,6 +157,7 @@ const HostelRegister = () =>{
                     <input type="text" className="form-control w-50 "
                     placeholder="Enter your hostel name"
                     name="hostelName"
+                    required
                     value={hostels.hostelName}
                     onChange={onChangeHandler}/>
                 </div>
@@ -150,7 +167,17 @@ const HostelRegister = () =>{
                     <input type="text" className="form-control w-50"
                     placeholder="Enter your name"
                     name="hostelOwnerName"
+                    required
                     value={hostels.hostelOwnerName}
+                    onChange={onChangeHandler}/>
+                </div>
+                <div className="form-group  ">
+                    <label className='text-info'>HostelOwnerName</label>
+                    <input type="email" className="form-control w-50"
+                    placeholder="Enter your email"
+                    name="email"
+                    required
+                    value={hostels.email}
                     onChange={onChangeHandler}/>
                 </div>
 
@@ -159,6 +186,7 @@ const HostelRegister = () =>{
                     <input type="text" className="form-control w-50"
                     placeholder="Enter Hostel Address"
                     name="hostelAddress"
+                    required
                     value={hostels.hostelAddress}
                     onChange={onChangeHandler}/>
                 </div>
@@ -167,9 +195,10 @@ const HostelRegister = () =>{
                     <label className="form-label pt-2 text-info">Contact Details</label>
                     <div className="col">
                         <label className="text-info"> Contact</label>
-                        <input type="text" className="form-control" 
+                        <input type="number" className="form-control" 
                         placeholder="enter your contact"
                         name="hostelContact"
+                        required
                         value={hostels.hostelContact.hostelContact}
                         onChange={onChangeHandler}
                         />
@@ -178,9 +207,10 @@ const HostelRegister = () =>{
 
                     <div className="col">
                         <label className="text-info">hostel contact</label>
-                        <input type="text" className="form-control" 
+                        <input type="number" className="form-control" 
                         placeholder="enter hostel contact"
                         name="hostelOwnerContact"
+                        required
                         value={hostels.hostelContact.hostelOwnerContact}
                         onChange={onChangeHandler}/>
                     </div>
@@ -191,8 +221,9 @@ const HostelRegister = () =>{
                     <div className="col">
                         <label className="text-info"> Electicity</label>
                         <input type="text" className="form-control" 
-                        placeholder="enter your contact"
+                        placeholder="enter availablility of Electricity"
                         name="electricity"
+                        
                         value={hostels.facilities.electricity}
                         onChange={onChangeHandler}
                         />
@@ -202,8 +233,9 @@ const HostelRegister = () =>{
                     <div className="col">
                         <label className="text-info">Water</label>
                         <input type="text" className="form-control" 
-                        placeholder="enter hostel contact"
+                        placeholder="enter availibility of Water"
                         name="water"
+                        
                         value={hostels.facilities.water}
                         onChange={onChangeHandler}/>
                     </div>
