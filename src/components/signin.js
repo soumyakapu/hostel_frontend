@@ -15,8 +15,9 @@ const Sigin = () =>{
               <div className="form-group  ">
                <label className='text-info'>Name</label>
                  <input type="text" className="form-control w-50"
-                 value={user.userName}
                  name='userName'
+                 value={user.userName}
+                 onChange={(e)=>{ setUser({...user,[e.target.name]:[e.target.value]})}}
                   placeholder="Enter name"/>
               </div>
               <div className="form-group ">
@@ -26,9 +27,8 @@ const Sigin = () =>{
                 placeholder="Password"/>
               </div>
              <button type="submit" className="btn btn-primary m-2"
-              onClick={(data)=>{
-                setUser(user)
-                navigate('/')
+              onClick={()=>{
+                navigate('/'+user.userName)
              }} 
              >Sigin</button>
              <button type="submit" 

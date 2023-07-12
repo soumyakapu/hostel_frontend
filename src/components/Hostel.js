@@ -2,21 +2,10 @@ import { useEffect, useState } from "react"
 import { FETCH_ALL_HOSTELS } from "../utils/Api"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../index.css'
+import { useNavigate } from "react-router-dom"
 const Hostel = ()=>{
     const [hostels,setHostels] = useState([])
-  
-    // const fetchHostels = async() =>{
-    //     const response = await fetch(FETCH_ALL_HOSTELS,{
-    //         method : 'GET',
-    //         headers : {
-    //             "Content-Type" : "application/json"
-    //         }
-    //     })
-    //         const data = response
-    // }
-    // useEffect(()=>{
-    //     fetchHostels()
-    // },[])
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(FETCH_ALL_HOSTELS) 
           .then(response => response.json())
@@ -27,7 +16,10 @@ const Hostel = ()=>{
         <div className="">
          <h2>Hostels</h2>
          <hr/>
-           <div className="container">
+           <div className="container"
+            // onClick={()=>{
+            // navigate("/edit") }}
+           >
                 {hostels.map(hostel => (
                     <div className="grid text-center style=--bs-columns: 3  listitems"> 
                     {/* sbg-light */}

@@ -10,6 +10,7 @@ const Nav = () =>{
                     <NavLink   to={'/'} className={'text-dark p-5 m-5 '}>Home</NavLink>
                    <NavLink to={'/hostel'} className={'text-dark p-2 m-3'}>Hostel</NavLink>
                     <NavLink to={'/signin'} className={'text-dark p-2 m-3'}>Sigin</NavLink>
+                    
          </nav>
     )
     

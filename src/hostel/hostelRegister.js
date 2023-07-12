@@ -128,7 +128,7 @@ const HostelRegister = () =>{
         e.preventDefault()
         createHostel()
         setHostels(hosteDetails)
-        navigate('/')
+        navigate('/'+hostels.hostelOwnerName)
     }
     return(
   
