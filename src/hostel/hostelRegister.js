@@ -8,6 +8,8 @@ const HostelRegister = () =>{
         hostelOwnerName :'',
         hostelAddress : '',
         email:'',
+        password:'',
+        confirmPassword :'',
         hostelContact :{
             hostelContact : '',
             hostelOwnerContact : ''
@@ -113,6 +115,8 @@ const HostelRegister = () =>{
             [e.target.name] : false
         })
     }
+
+    // check the hostels.password === hostels.confirmPassword it true ->
     
     const createHostel = async() =>{
        const response = await fetch(CREATE_HOSTEL,{
@@ -172,7 +176,7 @@ const HostelRegister = () =>{
                     onChange={onChangeHandler}/>
                 </div>
                 <div className="form-group  ">
-                    <label className='text-info'>HostelOwnerName</label>
+                    <label className='text-info'>email</label>
                     <input type="email" className="form-control w-50"
                     placeholder="Enter your email"
                     name="email"
@@ -180,6 +184,29 @@ const HostelRegister = () =>{
                     value={hostels.email}
                     onChange={onChangeHandler}/>
                 </div>
+                <div className="form-group  ">
+                    <label className='text-info'>password</label>
+                    <input type="password" className="form-control w-50"
+                    placeholder="Enter your password"
+                    name="password"
+                    required
+                    value={hostels.password}
+                    onChange={onChangeHandler}/>
+                </div>
+                <div className="form-group  ">
+                    <label className='text-info'>confirm password</label>
+                    <input type="password" className="form-control w-50"
+                    placeholder="Enter your confirm password"
+                    name="confirmPassword"
+                    required
+                    value={hostels.confirmPassword}
+                    onChange={onChangeHandler}/>
+                    {
+                        hostels.confirmPassword && hostels.password !== hostels.confirmPassword && <label style={{color:'red'}}>Password doesn't matched</label>
+                    }
+                </div>
+
+
 
                 <div className="form-group  ">
                     <label className='text-info'>Hostel Address</label>

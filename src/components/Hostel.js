@@ -6,17 +6,18 @@ const Hostel = ()=>{
     const [hostels,setHostels] = useState([])
     
     useEffect(() => {
-        fetch(FETCH_ALL_HOSTELS) 
-          .then(response => response.json())
-          .then(data => setHostels(data))
-          .catch(error => console.error(error));
+        async function getAll(){
+            const response = await fetch(FETCH_ALL_HOSTELS) 
+            const jsonData = await response.json()
+           setHostels(jsonData.data)
+        }
+        getAll()
       }, []);
     return(
         <div className="">
          <h2>Hostels</h2>
          <hr/>
            <div className="container">
-
                 {hostels.map(hostel => (
                     <div className="grid text-center style=--bs-columns: 3  listitems"> 
                 <ul key={hostel.id}>

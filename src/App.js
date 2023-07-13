@@ -19,7 +19,7 @@ function App() {
       <Route path="/hostel" element={<Hostel/>}/>
       <Route path="/signin" element={<Sigin/>}/>
       <Route path="/register" element={<HostelRegister/>}/>
-      <Route path="/:user" element={<HostelOwnerHome/>}/>
+      <Route path="/dashboard" element={<HostelOwnerHome/>}/>
       <Route path="/edit" element={<EditHostel/>}/>
     </Routes>
     </div>

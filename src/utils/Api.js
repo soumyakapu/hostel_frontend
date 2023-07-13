@@ -6,3 +6,4 @@ export const FETCH_HOSTEL_BYNAME = `${BASE_URL}/hostelbyname`
 export const DELETE_HOSTEL = `${BASE_URL}/delteBYName`
 export const ACTIVATE_HOSTEL = `${BASE_URL}/activate`
 export const DEACTIVE_HOSTEL = `${BASE_URL}/deactive`
+export const LOGIN = `${BASE_URL}/login`
